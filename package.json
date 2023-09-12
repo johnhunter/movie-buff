@@ -1,0 +1,41 @@
+{
+  "name": "movie-buff",
+  "version": "1.0.0",
+  "description": "An MVF for keeping track of viewed movies and adding personal reviews.",
+  "author": "john@johnhunter.info",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test-ui": "npm run test -- --ui"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.4",
+    "@vitest/ui": "^0.34.4",
+    "jsdom": "^22.1.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 2 chrome version",
+      "last 2 firefox version",
+      "last 2 safari version"
+    ]
+  }
+}
