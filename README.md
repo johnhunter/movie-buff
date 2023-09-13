@@ -2,9 +2,11 @@
 
 An MVF for keeping track of viewed movies and adding personal reviews.
 
+The initial deliverable is a walking skeleton to prove the technical solution and act as a focus for discussion. Both [implementation notes](docs/notes.md) and a list of [further work](docs/further-work.md) are provided in `./docs`.
+
 ## Technology stack
 
-The front-end stack is based on using [Vite](https://vitejs.dev/) for its leverage of ES module support in the browser and convention based approach. Testing uses [Testing Library](https://testing-library.com/) and [Vitest](https://vitest.dev/). We're using [react-query](https://tanstack.com/query/v4) for api requests.
+A React / TypeScript application, the front-end stack is based on [Vite](https://vitejs.dev/) for its leverage of ES module support in the browser and convention based approach. API requests use [Ky](https://github.com/sindresorhus/ky#readme) as a convenience wrapper to fetch.
 
 ## Prerequisites
 

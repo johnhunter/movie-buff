@@ -1,1 +1,1 @@
-export { API_ROOT, API_KEY } from './api';
+export { API_ROOT, getJson } from './api';

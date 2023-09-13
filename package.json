@@ -9,11 +9,12 @@
     "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "npm run build && vite preview",
     "test": "vitest",
     "test-ui": "npm run test -- --ui"
   },
   "dependencies": {
+    "ky": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
