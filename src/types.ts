@@ -1,8 +1,10 @@
-type Movie = {
+export type Status = 'loading' | 'error' | 'success';
+
+export type Movie = {
   imdbID: string;
   Title: string;
   Year: string;
-  Released: string; // could be a date type?
+  Released: string;
   Genre: string[];
   Actors: string[];
   Plot: string;
@@ -10,27 +12,27 @@ type Movie = {
   Ratings: Rating[];
 };
 
-type Rating = {
+export type Rating = {
   Source: string;
   Value: String;
 };
 
-type Movies = Record<string, Movie>;
+export type Movies = Record<string, Movie>;
 
-type Viewing = {
+export type Viewing = {
   imdbID: string;
   date: Date;
 };
-type ViewingHistory = Viewing[];
+export type ViewingHistory = Viewing[];
 
-type Review = {
+export type Review = {
   imdbID: string;
   content: string;
 };
 
-type Recommendation = {
+export type Recommendation = {
   imdbID: string;
   kind: 'actor' | 'genre';
 };
 
-type RecommendationLookup = Recommendation[];
+export type RecommendationLookup = Recommendation[];

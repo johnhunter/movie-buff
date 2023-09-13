@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+.input {
+  font-size: inherit;
+  color: inherit;
+  padding: 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 0.25rem;
+}
+
+.resultsList {
+  list-style: none;
+  padding-inline: unset;
+}
+
+.resultsList > li {
+  margin-block: 0.5rem;
+}

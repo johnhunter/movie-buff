@@ -1,0 +1,10 @@
+:root {
+  --page-margin-inline: 2rem;
+
+  font-family: system-ui, sans-serif;
+  color: hsl(0deg 0% 20%);
+}
+
+.container {
+  padding: 1rem;
+}
