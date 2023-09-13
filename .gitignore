@@ -1,6 +1,9 @@
 # MacOS
 .DS_Store
 
+# Secrets
+.env
+
 # dependencies
 /node_modules
 npm-debug.log*

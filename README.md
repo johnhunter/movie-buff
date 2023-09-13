@@ -10,6 +10,14 @@ The front-end stack is based on using [Vite](https://vitejs.dev/) for its levera
 
 We assume `node@18`. You can use any Node version manager that uses the `.nvmrc` configuration file (we recommend [fnm](https://fnm.vercel.app/)).
 
+You will need your own api key stored in a `.env` file in root, e.g.
+
+```
+VITE_API_KEY=xxx000xxx
+```
+
+see https://www.omdbapi.com/
+
 ## Npm scripts
 
 - `npm start` starts the dev HMR environment on http://localhost:5173
