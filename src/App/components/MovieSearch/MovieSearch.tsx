@@ -1,4 +1,5 @@
 import { FC, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Movie, Status } from '@/types';
 import { fetchMovies } from '@/api';
 import css from './MovieSearch.module.css';
@@ -9,6 +10,7 @@ interface MovieSearchProps {
    */
   minChars?: number;
 }
+
 /**
  * Provides the movie search UI and linked results.
  *
@@ -62,9 +64,9 @@ const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
           <ul className={css.resultsList}>
             {resultList.map(({ imdbID, Title, Year }) => (
               <li key={imdbID}>
-                <a href={`movie/${imdbID}`}>
+                <Link to={`movie/${imdbID}`}>
                   {Title} ({Year})
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
