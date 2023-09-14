@@ -8,6 +8,8 @@ The initial deliverable is a walking skeleton to prove the technical solution an
 
 A React / TypeScript application, the front-end stack is based on [Vite](https://vitejs.dev/) for its leverage of ES module support in the browser and convention based approach. API requests use [Ky](https://github.com/sindresorhus/ky#readme) as a convenience wrapper to fetch.
 
+Application state is managed by [Redux Toolkit](https://redux-toolkit.js.org/), with the store state backed to localStorage using redux middleware [Redux-LocalStorage-Simple](https://github.com/kilkelly/redux-localstorage-simple)
+
 ## Prerequisites
 
 We assume `node@18`. You can use any Node version manager that uses the `.nvmrc` configuration file (we recommend [fnm](https://fnm.vercel.app/)).

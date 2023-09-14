@@ -5,7 +5,7 @@
 - [x] Create repo and basic app
 - [x] Setup API interaction and key
 - [x] Get movie search and selection working
-- [ ] Setup store and localStorage persistence
+- [x] Setup store and localStorage persistence
 - [ ] Get movie detail view working
 - [ ] Add review editing
 - [ ] Add recommendations
