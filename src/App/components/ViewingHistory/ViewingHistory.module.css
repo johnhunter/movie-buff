@@ -1,0 +1,21 @@
+.list {
+  inset-inline: 0;
+  list-style: none;
+  padding-inline: 0.5rem;
+}
+
+.list > li {
+  margin-block: 0.5rem;
+}
+
+.list a {
+  text-decoration: none;
+}
+.list a:hover {
+  text-decoration: underline;
+}
+
+.viewedDate {
+  color: hsl(0, 0%, 50%);
+  font-style: italic;
+}

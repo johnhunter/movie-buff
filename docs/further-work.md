@@ -6,7 +6,7 @@
 - [x] Setup API interaction and key
 - [x] Get movie search and selection working
 - [x] Setup store and localStorage persistence
-- [ ] Get movie detail view working
+- [x] Get movie detail view working
 - [ ] Add review editing
 - [ ] Add recommendations
 - [ ] Add unit tests

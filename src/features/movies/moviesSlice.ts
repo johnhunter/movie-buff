@@ -1,7 +1,11 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  createSelector,
+} from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/store';
-import type { Movies, Movie, ViewingHistory } from '@/types';
+import type { Movies, Movie, ViewingHistory, MovieDetail } from '@/types';
 import { fetchMovieDetail } from '@/api';
 
 const name = 'movies';
@@ -31,7 +35,7 @@ export const moviesSlice = createSlice({
       const imdbID = action.payload;
 
       if (!state.viewings.find((v) => v.imdbID === imdbID)) {
-        state.viewings.push({ imdbID, date: new Date().toISOString() });
+        state.viewings.push({ imdbID, viewedDate: new Date().toISOString() });
       }
     },
   },
@@ -49,6 +53,18 @@ export const actions = {
   fetchMovieById,
 };
 
-export const selectMovies = (state: RootState) => state.movies.movies;
+export const selectRoot = (state: RootState) => state[name];
+export const selectMovies = (state: RootState) => selectRoot(state).movies;
+
+export const selectViewed = createSelector(
+  selectMovies,
+  (state: RootState) => selectRoot(state).viewings,
+  (movies, viewings) => {
+    return viewings.map((item) => {
+      const { Title, Year } = movies[item.imdbID];
+      return { ...item, Title, Year };
+    });
+  }
+);
 
 export default moviesSlice.reducer;

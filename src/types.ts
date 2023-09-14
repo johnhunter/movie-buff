@@ -10,13 +10,16 @@ export type Movie = {
 export type MovieDetail = {
   imdbID: string;
   Title: string;
+  Director: string;
   Year: string;
   Poster: string;
   Released: string;
   Genre: string[];
   Actors: string[];
   Plot: string;
+  Awards: string;
   Ratings: Rating[];
+  Review?: string;
 };
 
 export type Rating = {
@@ -28,7 +31,7 @@ export type Movies = Record<string, MovieDetail>;
 
 export type Viewing = {
   imdbID: string;
-  date: string; // ISO date
+  viewedDate: string; // ISO date
 };
 export type ViewingHistory = Viewing[];
 
