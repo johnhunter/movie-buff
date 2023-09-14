@@ -21,7 +21,7 @@ export type Movies = Record<string, Movie>;
 
 export type Viewing = {
   imdbID: string;
-  date: Date;
+  date: string; // ISO date
 };
 export type ViewingHistory = Viewing[];
 

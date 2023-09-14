@@ -4,7 +4,8 @@
 
 - [x] Create repo and basic app
 - [x] Setup API interaction and key
-- [ ] Get movie search and local store working
+- [x] Get movie search and selection
+- [ ] Setup store and localStorage persistence
 - [ ] Get movie detail view working
 - [ ] Add review editing
 - [ ] Add recommendations
@@ -12,10 +13,12 @@
 - [ ] Add component tests
 - [ ] Add integration tests (mocked API)
 - [ ] Style the UI
+- [ ] Add throttling to the movie search
 
 ## Further improvements
 
 How the solution might be developed and alternative approaches.
 
-- Consider extracting state to a state management solution such as Redux. The store state could be backed to the LocalStorage initially and migrated to an API later on.
+- Consider refactoring the movie API search into Redux, probably in a separate store slice. Thunks should be a good enough approach for data fetching.
+- Consider migrating localStorage to an API, can be handled in redux.
 - Create responsive view optimised for larger screens.
