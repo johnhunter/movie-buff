@@ -12,7 +12,11 @@ Application state is managed by [Redux Toolkit](https://redux-toolkit.js.org/), 
 
 ## Prerequisites
 
-We assume `node@18`. You can use any Node version manager that uses the `.nvmrc` configuration file (we recommend [fnm](https://fnm.vercel.app/)).
+### Node
+
+The local environment assumes `node@18`. You can use any Node version manager that uses the `.nvmrc` configuration file (we recommend [fnm](https://fnm.vercel.app/)).
+
+### Env vars
 
 You will need your own api key stored in a `.env` file in root, e.g.
 

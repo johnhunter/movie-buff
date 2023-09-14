@@ -1,6 +1,6 @@
 # Implementation notes
 
-## Context of use
+## Context of use
 
 - Likely to be used in mobile contexts, maybe in dark conditions
 - Should support offline use where possible
