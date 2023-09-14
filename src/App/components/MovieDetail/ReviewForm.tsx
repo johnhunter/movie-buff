@@ -11,9 +11,11 @@ const ReviewForm: FC<ReviewForm> = ({ initialValue = '', onSubmit }) => {
 
   return (
     <div className={css.review}>
+      <h3>Review</h3>
       <textarea
         value={value}
         onChange={(e) => setValue(e.currentTarget.value)}
+        placeholder="Add your own review for this movie"
       ></textarea>
       <div>
         <button onClick={() => onSubmit(value)}>Save review</button>{' '}

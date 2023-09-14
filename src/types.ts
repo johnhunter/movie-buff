@@ -7,6 +7,21 @@ export type Movie = {
   Poster: string;
 };
 
+export type MovieData = {
+  imdbID: string;
+  Title: string;
+  Director: string;
+  Year: string;
+  Poster: string;
+  Released: string;
+  Genre: string;
+  Actors: string;
+  Plot: string;
+  Awards: string;
+  Ratings: Rating[];
+  review?: string;
+};
+
 export type MovieDetail = {
   imdbID: string;
   Title: string;
@@ -40,9 +55,7 @@ export type Review = {
   content: string;
 };
 
-export type Recommendation = {
-  imdbID: string;
-  kind: 'actor' | 'genre';
-};
-
-export type RecommendationLookup = Recommendation[];
+/**
+ * Maps a term to a list of movie ids
+ */
+export type RecommendationLookup = Record<string, string[]>;

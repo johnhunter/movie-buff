@@ -11,7 +11,7 @@
 - Movie data omdbapi.com API
 - Local DB
   - movies (key by imdbID) cached from omdbapi API
-  - viewingHistory
+  - viewings
   - reviews
   - recommendationLookup
 

@@ -1,7 +1,11 @@
 import { FC, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import type { MovieDetail } from '@/types';
-import { actions } from '@/features/movies/moviesSlice';
-import { useAppDispatch } from '@/App/hooks/store';
+import {
+  actions,
+  selectRecommendationsForMovie,
+} from '@/features/movies/moviesSlice';
+import { useAppDispatch, useAppSelector } from '@/App/hooks/store';
 import DetailItem from './DetailItem';
 import ReviewForm from './ReviewForm';
 import css from './MovieDetail.module.css';
@@ -10,10 +14,14 @@ interface MovieDetailProps {
   movie: MovieDetail;
 }
 
-const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
+const MovieDetailCmp: FC<MovieDetailProps> = ({ movie }) => {
   const { imdbID } = movie;
 
   const dispatch = useAppDispatch();
+  const recommendations = useAppSelector((state) =>
+    selectRecommendationsForMovie(state, imdbID)
+  );
+
   const onViewed = () => {
     dispatch(actions.view(imdbID));
   };
@@ -26,6 +34,10 @@ const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
 
   return (
     <div>
+      <nav className={css.pageNav}>
+        <Link to="/">&larr; Home</Link>
+      </nav>
+
       <h2>
         {movie.Title} <span>({movie.Year})</span>
       </h2>
@@ -47,13 +59,30 @@ const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
         <p>{movie.Plot}</p>
       </div>
 
-      <figure>
+      <figure className={css.posterContainer}>
         <img src={movie.Poster} alt="A promotional poster for the movie" />
       </figure>
 
       <ReviewForm initialValue={movie.review} onSubmit={onReviewSubmit} />
+
+      <div className={css.section}>
+        <h3>Recommended</h3>
+
+        <ul>
+          {recommendations.map((movie) => {
+            const { imdbID, Title, Year } = movie;
+            return (
+              <li key={imdbID}>
+                <Link to={`/movie/${imdbID}`}>
+                  {Title} ({Year})
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
 
-export default MovieDetail;
+export default MovieDetailCmp;
