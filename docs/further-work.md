@@ -12,6 +12,7 @@
 - [ ] Add unit tests
 - [ ] Add component tests
 - [ ] Add integration tests (mocked API)
+- [ ] Add an ErrorBoundary component to the App
 - [ ] Style the UI
 - [ ] Add throttling to the movie search
 

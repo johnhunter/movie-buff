@@ -17,9 +17,11 @@
 
 see [types](../src/types.ts) for further details.
 
-## Searching the `omdbapi` API
+## Local store
 
-- API only returns a single entity. UI should allow user to submit an explicit title search rather than substring queries.
+Initial assumption was to use the localStorage as the source of truth with an eventual state management solution. It became clear that updating the localStorage would be wasted effort and adopting Redux would be faster and avoid needless refactor later.
+
+Note that movie search results from the api are not stored. Just the selected one is written to the store. Caching could be considered as the movie data is unlikely to change often.
 
 ## Screens
 

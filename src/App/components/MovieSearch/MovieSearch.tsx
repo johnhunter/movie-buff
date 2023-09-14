@@ -56,6 +56,7 @@ const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
 
   const noResults =
     status === 'success' && !resultList.length && query.length > minChars;
+  const hasResults = !!(query && resultList.length);
 
   return (
     <div className={css.container}>
@@ -66,12 +67,11 @@ const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
         placeholder="Start typing to find a movie..."
         className={css.input}
       />
-      <div>
+      <div className={css.resultWrapper}>
         {status === 'loading' && <div>loading...</div>}
         {status === 'error' && <div>An error occurred</div>}
-        {noResults ? (
-          <div>No movies found</div>
-        ) : (
+        {noResults && <div>No movies found</div>}
+        {hasResults && (
           <ul className={css.resultsList}>
             {resultList.map((movie) => {
               const { imdbID, Title, Year } = movie;

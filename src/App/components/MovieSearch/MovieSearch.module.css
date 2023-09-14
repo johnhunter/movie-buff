@@ -12,9 +12,21 @@
   border-radius: 0.25rem;
 }
 
+.resultWrapper {
+  position: relative;
+}
+
 .resultsList {
+  position: absolute;
+  margin: 0;
+  inset-block-start: 0;
+  inset-inline: 0;
+
   list-style: none;
-  padding-inline: unset;
+  padding-inline: 0.5rem;
+  background: #fff;
+  border: 1px solid hsl(0, 0%, 90%);
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .resultsList > li {

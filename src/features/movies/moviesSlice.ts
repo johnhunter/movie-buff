@@ -37,6 +37,6 @@ export const actions = moviesSlice.actions;
 export const { select, view } = actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectMovies = (state: RootState) => state.movies;
+export const selectMovies = (state: RootState) => state.movies.movies;
 
 export default moviesSlice.reducer;
