@@ -19,7 +19,7 @@ export type MovieDetail = {
   Plot: string;
   Awards: string;
   Ratings: Rating[];
-  Review?: string;
+  review?: string;
 };
 
 export type Rating = {

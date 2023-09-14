@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/store';
-import type { Movies, Movie, ViewingHistory, MovieDetail } from '@/types';
+import type { Movies, ViewingHistory, MovieDetail } from '@/types';
 import { fetchMovieDetail } from '@/api';
 
 const name = 'movies';
@@ -27,16 +27,22 @@ const fetchMovieById = createAsyncThunk(
   }
 );
 
+type ReviewPayload = PayloadAction<Pick<MovieDetail, 'imdbID' | 'review'>>;
+
 export const moviesSlice = createSlice({
   name,
   initialState,
   reducers: {
-    view: (state, action: PayloadAction<Movie['imdbID']>) => {
+    view: (state, action: PayloadAction<MovieDetail['imdbID']>) => {
       const imdbID = action.payload;
 
       if (!state.viewings.find((v) => v.imdbID === imdbID)) {
         state.viewings.push({ imdbID, viewedDate: new Date().toISOString() });
       }
+    },
+    updateReview: (state, action: ReviewPayload) => {
+      const { imdbID, review = '' } = action.payload;
+      state.movies[imdbID].review = review;
     },
   },
   extraReducers: (builder) => {

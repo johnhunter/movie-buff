@@ -7,7 +7,7 @@
 - [x] Get movie search and selection working
 - [x] Setup store and localStorage persistence
 - [x] Get movie detail view working
-- [ ] Add review editing
+- [x] Add review editing
 - [ ] Add recommendations
 - [ ] Add unit tests
 - [ ] Add component tests
@@ -20,6 +20,8 @@
 
 How the solution might be developed and alternative approaches.
 
-- Consider refactoring the movie API search into Redux, probably in a separate store slice. Thunks should be a good enough approach for data fetching.
+- ~Consider extracting state to a state management solution such as Redux~
+- Consider refactoring the movie API search into Redux, probably in a separate store slice.
 - Consider migrating localStorage to an API, can be handled in redux.
 - Create responsive view optimised for larger screens.
+- Consider normalising the data property keys PascalCase -> camelCase when fetched

@@ -1,19 +1,28 @@
-import { FC } from 'react';
+import { FC, useCallback } from 'react';
 import type { MovieDetail } from '@/types';
+import { actions } from '@/features/movies/moviesSlice';
+import { useAppDispatch } from '@/App/hooks/store';
 import DetailItem from './DetailItem';
+import ReviewForm from './ReviewForm';
 import css from './MovieDetail.module.css';
-import { actions, selectMovies } from '@/features/movies/moviesSlice';
-import { useAppDispatch, useAppSelector } from '@/App/hooks/store';
 
 interface MovieDetailProps {
   movie: MovieDetail;
 }
 
 const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
+  const { imdbID } = movie;
+
   const dispatch = useAppDispatch();
   const onViewed = () => {
-    dispatch(actions.view(movie.imdbID));
+    dispatch(actions.view(imdbID));
   };
+  const onReviewSubmit = useCallback(
+    (review: string) => {
+      dispatch(actions.updateReview({ imdbID, review: review }));
+    },
+    [imdbID]
+  );
 
   return (
     <div>
@@ -42,12 +51,7 @@ const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
         <img src={movie.Poster} alt="A promotional poster for the movie" />
       </figure>
 
-      <div className={css.review}>
-        <textarea value={movie.Review}></textarea>
-        <div>
-          <button>Save review</button> <button>Cancel changes</button>
-        </div>
-      </div>
+      <ReviewForm initialValue={movie.review} onSubmit={onReviewSubmit} />
     </div>
   );
 };
