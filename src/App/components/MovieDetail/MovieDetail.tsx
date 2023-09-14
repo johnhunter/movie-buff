@@ -1,18 +1,11 @@
 import { FC } from 'react';
-import { useAppSelector } from '@/App/hooks/store';
-import { selectMovies } from '@/features/movies/moviesSlice';
+import type { MovieDetail } from '@/types';
 
 interface MovieDetailProps {
-  id: string;
+  movie: MovieDetail;
 }
 
-const MovieDetail: FC<MovieDetailProps> = ({ id }) => {
-  const movie = useAppSelector(selectMovies)[id];
-
-  if (!movie) {
-    throw new Error(`Cannot find movie in store for id ${id}`);
-  }
-
+const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
   return (
     <div>
       <h2>

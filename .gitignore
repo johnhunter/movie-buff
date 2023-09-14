@@ -1,6 +1,9 @@
 # MacOS
 .DS_Store
 
+# IDE / User
+.vscode
+
 # Secrets
 .env
 
@@ -13,3 +16,4 @@ npm-debug.log*
 
 # production
 /dist
+

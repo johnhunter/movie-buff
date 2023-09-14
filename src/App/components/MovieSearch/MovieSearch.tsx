@@ -1,9 +1,8 @@
 import { FC, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Movie, Status } from '@/types';
-import { fetchMovies } from '@/api';
-import { useAppDispatch } from '@/App/hooks/store';
-import { actions } from '@/features/movies/moviesSlice';
+import { searchMovies } from '@/api';
+
 import css from './MovieSearch.module.css';
 
 interface MovieSearchProps {
@@ -20,7 +19,6 @@ interface MovieSearchProps {
  * navigate to the detail view.
  */
 const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
-  const dispatch = useAppDispatch();
   const [query, setQuery] = useState('');
   const [resultList, setResultList] = useState<Movie[]>([]);
   const [status, setStatus] = useState<undefined | Status>();
@@ -37,7 +35,7 @@ const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
 
       setStatus('loading');
       try {
-        const results = await fetchMovies(query);
+        const results = await searchMovies(query);
         setResultList(results);
         setStatus('success');
       } catch (err) {
@@ -45,13 +43,6 @@ const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
       }
     },
     [query]
-  );
-
-  const onSelect = useCallback(
-    (movie: Movie) => {
-      dispatch(actions.select(movie));
-    },
-    [dispatch]
   );
 
   const noResults =
@@ -77,7 +68,7 @@ const MovieSearch: FC<MovieSearchProps> = ({ minChars = 4 }) => {
               const { imdbID, Title, Year } = movie;
               return (
                 <li key={imdbID}>
-                  <Link onClick={() => onSelect(movie)} to={`movie/${imdbID}`}>
+                  <Link to={`movie/${imdbID}`}>
                     {Title} ({Year})
                   </Link>
                 </li>

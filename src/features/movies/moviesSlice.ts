@@ -1,7 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '@/store';
 import type { Movies, Movie, ViewingHistory } from '@/types';
+import { fetchMovieDetail } from '@/api';
 
 const name = 'movies';
 
@@ -15,14 +16,17 @@ const initialState: MoviesState = {
   viewings: [],
 };
 
+const fetchMovieById = createAsyncThunk(
+  `${name}/fetchMovieById`,
+  async (id: string, _thunkAPI) => {
+    return await fetchMovieDetail(id);
+  }
+);
+
 export const moviesSlice = createSlice({
   name,
   initialState,
   reducers: {
-    select: (state, action: PayloadAction<Movie>) => {
-      const movie = action.payload;
-      state.movies[movie.imdbID] = movie;
-    },
     view: (state, action: PayloadAction<Movie['imdbID']>) => {
       const imdbID = action.payload;
 
@@ -31,12 +35,20 @@ export const moviesSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    // TODO: add actions and state for loading and errors
+    builder.addCase(fetchMovieById.fulfilled, (state, action) => {
+      const movie = action.payload;
+      state.movies[movie.imdbID] = movie;
+    });
+  },
 });
 
-export const actions = moviesSlice.actions;
-export const { select, view } = actions;
+export const actions = {
+  ...moviesSlice.actions,
+  fetchMovieById,
+};
 
-// Other code such as selectors can use the imported `RootState` type
 export const selectMovies = (state: RootState) => state.movies.movies;
 
 export default moviesSlice.reducer;

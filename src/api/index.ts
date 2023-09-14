@@ -1,1 +1,1 @@
-export { API_ROOT, getJson, fetchMovies } from './api';
+export { searchMovies, fetchMovieDetail } from './api';

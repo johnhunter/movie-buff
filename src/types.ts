@@ -4,11 +4,18 @@ export type Movie = {
   imdbID: string;
   Title: string;
   Year: string;
+  Poster: string;
+};
+
+export type MovieDetail = {
+  imdbID: string;
+  Title: string;
+  Year: string;
+  Poster: string;
   Released: string;
   Genre: string[];
   Actors: string[];
   Plot: string;
-  Poster?: string; // always available?
   Ratings: Rating[];
 };
 
@@ -17,7 +24,7 @@ export type Rating = {
   Value: String;
 };
 
-export type Movies = Record<string, Movie>;
+export type Movies = Record<string, MovieDetail>;
 
 export type Viewing = {
   imdbID: string;
