@@ -71,6 +71,7 @@ const MovieDetailCmp: FC<MovieDetailProps> = ({ movie }) => {
       </figure>
 
       <ReviewForm
+        key={imdbID}
         initialValue={movie.review}
         onSubmit={onReviewSubmit}
         disabled={!hasBeenViewed}
