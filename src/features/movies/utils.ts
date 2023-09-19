@@ -1,4 +1,4 @@
-import type { MovieDetail, MovieData, RecommendationLookup } from '@/types';
+import type { MovieDetail, MovieApiData, RecommendationLookup } from '@/types';
 
 const splitTrim = (s: string) => s.split(',').map((x) => x.trim());
 
@@ -10,7 +10,6 @@ const splitTrim = (s: string) => s.split(',').map((x) => x.trim());
 2. When viewing a movie collect the ids of terms that match current movie, e.g.
 
 Movie has 'Bruce Willis' so related to movie 'x123'
-
 */
 
 export const appendRecommendations = (
@@ -56,7 +55,7 @@ export const getMatchingRecommendationIds = (
   return excludeId ? dedupedIds.filter((id) => id !== excludeId) : dedupedIds;
 };
 
-export const transformMovieData = (d: MovieData): MovieDetail => {
+export const transformMovieData = (d: MovieApiData): MovieDetail => {
   return {
     imdbID: d.imdbID,
     Title: d.Title,

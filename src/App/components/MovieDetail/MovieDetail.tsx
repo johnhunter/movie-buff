@@ -4,6 +4,7 @@ import type { MovieDetail } from '@/types';
 import {
   actions,
   selectRecommendationsForMovie,
+  selectViewed,
 } from '@/features/movies/moviesSlice';
 import { useAppDispatch, useAppSelector } from '@/App/hooks/store';
 import DetailItem from './DetailItem';
@@ -20,6 +21,10 @@ const MovieDetailCmp: FC<MovieDetailProps> = ({ movie }) => {
   const dispatch = useAppDispatch();
   const recommendations = useAppSelector((state) =>
     selectRecommendationsForMovie(state, imdbID)
+  );
+
+  const hasBeenViewed = useAppSelector(selectViewed).some(
+    (movie) => movie.imdbID === imdbID
   );
 
   const onViewed = () => {
@@ -43,7 +48,9 @@ const MovieDetailCmp: FC<MovieDetailProps> = ({ movie }) => {
       </h2>
 
       <div className={css.section}>
-        <button onClick={onViewed}>Mark as viewed</button>
+        <button onClick={onViewed} disabled={hasBeenViewed}>
+          {hasBeenViewed ? 'Viewed' : 'Mark as viewed'}
+        </button>
       </div>
 
       <div className={css.section}>
@@ -63,7 +70,12 @@ const MovieDetailCmp: FC<MovieDetailProps> = ({ movie }) => {
         <img src={movie.Poster} alt="A promotional poster for the movie" />
       </figure>
 
-      <ReviewForm initialValue={movie.review} onSubmit={onReviewSubmit} />
+      <ReviewForm
+        key={imdbID}
+        initialValue={movie.review}
+        onSubmit={onReviewSubmit}
+        disabled={!hasBeenViewed}
+      />
 
       <div className={css.section}>
         <h3>Recommended</h3>

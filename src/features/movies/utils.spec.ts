@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { MovieDetail, MovieData } from '@/types';
+import type { MovieDetail, MovieApiData } from '@/types';
 import {
   appendRecommendations,
   transformMovieData,
@@ -64,7 +64,7 @@ describe('appendRecommendations', () => {
 
 describe('transformMovieData', () => {
   it('transforms the API data', () => {
-    const data: MovieData = {
+    const data: MovieApiData = {
       imdbID: 'tt0095016',
       Title: 'Die Hard',
       Year: '1988',

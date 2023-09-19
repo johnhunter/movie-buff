@@ -1,41 +1,26 @@
 export type Status = 'loading' | 'error' | 'success';
 
-export type Movie = {
-  imdbID: string;
-  Title: string;
-  Year: string;
-  Poster: string;
-};
+export type Terms = string[];
 
-export type MovieData = {
+export interface Movie {
   imdbID: string;
   Title: string;
-  Director: string;
   Year: string;
   Poster: string;
+}
+
+export interface MovieDetail<T = Terms> extends Movie {
+  Director: string;
   Released: string;
-  Genre: string;
-  Actors: string;
+  Genre: T;
+  Actors: T;
   Plot: string;
   Awards: string;
   Ratings: Rating[];
   review?: string;
-};
+}
 
-export type MovieDetail = {
-  imdbID: string;
-  Title: string;
-  Director: string;
-  Year: string;
-  Poster: string;
-  Released: string;
-  Genre: string[];
-  Actors: string[];
-  Plot: string;
-  Awards: string;
-  Ratings: Rating[];
-  review?: string;
-};
+export type MovieApiData = MovieDetail<string>;
 
 export type Rating = {
   Source: string;

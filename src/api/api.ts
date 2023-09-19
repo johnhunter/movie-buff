@@ -1,5 +1,5 @@
 import ky from 'ky';
-import { Movie, MovieData } from '@/types';
+import { Movie, MovieApiData } from '@/types';
 
 export const API_ROOT = 'https://www.omdbapi.com';
 
@@ -33,7 +33,7 @@ export const searchMovies = async (query: string) => {
 };
 
 export const fetchMovieDetail = async (imdbID: string) => {
-  const result = await getJson<MovieData>({ i: imdbID });
+  const result = await getJson<MovieApiData>({ i: imdbID });
 
   return result;
 };
